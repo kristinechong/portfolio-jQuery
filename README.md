@@ -1,1 +1,1 @@
-# portfolio-javascript
+# portfolio-jQuery
