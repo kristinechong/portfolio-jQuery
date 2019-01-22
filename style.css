@@ -79,14 +79,60 @@
   background: white;
   padding: 10px 0px 10px 0px;
   margin: 0px 30px 0px 30px; 
+  transition: color .3s ease;
 }
 
 .nav-link:hover {
-  /* border-bottom: 4px solid #CEE5E3; */
   color: #333333;
-  font-weight: 700; 
+  font-weight: 700;
+  box-shadow: 0 -4px 0 #CEE5E3 inset;
+  transition: 0.2s;
 }
 
+/* -------------------
+    ABOUT ME MODAL
+-------------------- */
+.modal-body {
+  font-size: 24px;
+  font-family: freight-sans-pro, sans-serif;  font-weight: 400;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2em;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  padding: 2%;
+  border-radius: 50%;
+	box-shadow: 0 5px 25px 0px rgba(0,0,0,0.6);
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 25px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 15px 25px 0px rgba(0,0,0,0.2);
+		transform: translatey(-15px);
+	}
+	100% {
+		box-shadow: 0 5px 25px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.bio {
+  padding: 0px;
+}
 
 /* -------------------
       JUMBOTRON
@@ -117,7 +163,7 @@
 }
 
 .about {
-  margin: 0;
+  margin: 0 10px 0 10px;
   padding: 0;
   font-family: questa-sans, sans-serif;
   font-weight: 400;
@@ -128,6 +174,30 @@
   flex-wrap: wrap;
 }
 
+.tracking-in-expand {
+	animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 /* --------------
       BODY
 --------------- */
@@ -137,6 +207,16 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  animation: fade 3s ease-in 1;
+}
+
+@keyframes fade {
+  25% {
+    opacity: 25%;
+  }
+  75% {
+    opacity: 75%;
+  }
 }
 
 .row {
@@ -145,19 +225,53 @@
 
 .card {
   box-shadow: 0px 10px 30px #33333327;
+  border: none;
 }
 
 .card-body {
   border: none;
   padding: 0px;
+  animation: fade 3s ease-in 1;
+}
+
+.card-img-title {
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.card-img-title:hover {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 10px 30px #33333327;
+}
+
+.card-img-top {
+  opacity: 1;
+  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .card-img-top:hover {
-  display: none;
-  cursor: pointer;
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.au-pair:hover {
+
+/* .au-pair {
+  content: url(Images/Airbnb-Au-Pair.png);
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 10px 30px #33333327;
+  transition: position 2s ease;
+} */
+
+/* .au-pair:hover {
   content: url(Images/Airbnb-Au-Pair-Hover.png);
   display: inline-block;
   position: relative;
@@ -165,11 +279,9 @@
   height: auto;
   box-shadow: 0px 10px 30px #33333327;
   cursor: pointer;
-  left: 0px; /* change this value to one that suits you */
-  top: 0px; /* change this value to one that suits you */
-}
+} */
 
-.lahsa:hover {
+/* .lahsa:hover {
   content: url(Images/LAHSA-Hover.png);
   display: inline-block;
   position: relative;
@@ -177,11 +289,9 @@
   height: auto;
   box-shadow: 0px 10px 30px #33333327;
   cursor: pointer;
-  left: 0px; /* change this value to one that suits you */
-  top: 0px; /* change this value to one that suits you */
-}
+} */
 
-.usda:hover {
+/* .usda:hover {
   content: url(Images/USDA-Hover.png);
   display: inline-block;
   position: relative;
@@ -189,11 +299,9 @@
   height: auto;
   box-shadow: 0px 10px 30px #33333327;
   cursor: pointer;
-  left: 0px; /* change this value to one that suits you */
-  top: 0px; /* change this value to one that suits you */
-}
+} */
 
-.local-eyes:hover {
+/* .local-eyes:hover {
   content: url(Images/Local-Eyes-Hover.png);
   display: inline-block;
   position: relative;
@@ -201,9 +309,7 @@
   height: auto;
   box-shadow: 0px 10px 30px #33333327;
   cursor: pointer;
-  left: 0px; /* change this value to one that suits you */
-  top: 0px; /* change this value to one that suits you */
-}
+} */
 
 
   /* --------------
@@ -228,25 +334,31 @@
 }
 
 .far {
-    margin: 10px 10px 10px 10px;
+    margin: 10px 15px 10px 15px;
     color: #72A3A5;
+    transform: scale(1.5);
 }
 
 .fab {
-  margin: 10px 10px 10px 10px;
+  margin: 10px 15px 10px 15px;
   color: #72A3A5;
+  transform: scale(1.5);
 }
 
 .far:hover {
+  transform: scale(1.75);
   position: inherit;
   cursor: pointer;
   color: #E07C60;
+  transition: 0.2s;
 }
 
 .fab:hover {
+  transform: scale(1.75);
   position: inherit;
   cursor: pointer;
   color: #E07C60;
+  transition: 0.2s;
 }
 
 /* --------------
@@ -291,6 +403,10 @@
     font-size: 14px;
   }
 
+  .container {
+    width: 100%;
+  }
+
   .card {
     margin: 10px 0px 10px 0px;
   }
@@ -300,7 +416,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar {
     flex-wrap: wrap; 
   }
@@ -311,6 +427,10 @@
 
   .about {
     font-size: 20px;
+  }
+
+  .container {
+    width: 100%;
   }
 
   .card {
